@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head  th:replace="/layout/template :: header" >
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<nav th:replace="/layout/template :: navegacion"></nav>
+				<div class="card">
+					<div class="card-header"></div>
+					<div class="card-body">
+					<h3 th:if="ERROR!=null" th:text="${ERROR}" style="color:red"></h3>
+						<form th:action="@{/clientes/insertar}" th:object="${cliente}" method="POST">
+							<div class="form-group">
+								<label for="nombres">Nombres</label> 
+								<input type="text" class="form-control" th:field="*{nombres}" name="nombres">
+							</div>
+							<div class="form-group">
+								<label for="apellidos">Apellidos</label>
+								<input type="text" class="form-control" th:field="*{apellidos}" name="apellidos">
+							</div>
+							<div class="form-group">
+								<label for="dni">DNI</label>
+								<input type="text" class="form-control" th:field="*{dni}" name="dni">
+							</div>
+							<div class="form-group">
+								<label for="telefono">Teléfono</label>
+								<input type="text" class="form-control" th:field="*{telefono}" name="telefono">
+							</div>
+							<div class="form-group">
+								<label for="direccion">Dirección</label>
+								<input type="text" class="form-control" th:field="*{direccion}" name="direccion">
+							</div>
+							<input type="submit" th:value="${btn}" class="btn btn-primary">
+						</form>
+					</div>
+				</div>
+			</div>		
+		</div>
+	</div>
+</body>
+</html>
